@@ -1,13 +1,15 @@
-$vc-theme-color: #027aff;
-$vc-theme-color-light: #027aff;
+:root {
+  --vc-theme-color: #027aff;
+  --vc-theme-color-light: #027aff;
 
-$vc-border: 1px solid #e8e8e8;
-$vc-border-radius: 4px;
+  --vc-border: 1px solid #e8e8e8;
+  --vc-border-radius: 4px;
 
-$vc-font-color-333: #333;
-$vc-font-color-666: #666;
-$vc-font-color-999: #999;
+  --vc-font-color-333: #333;
+  --vc-font-color-666: #666;
+  --vc-font-color-999: #999;
 
-$vc-font-size-12: 12px;
-$vc-font-size-14: 14px;
-$vc-font-size-16: 16px;
+  --vc-font-size-12: 12px;
+  --vc-font-size-14: 14px;
+  --vc-font-size-16: 16px;
+}
