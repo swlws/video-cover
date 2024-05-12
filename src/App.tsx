@@ -1,7 +1,9 @@
+import Editor from "./views/editor";
+
 export default function App() {
   return (
-    <div>
-      <h1>Welcome to React Web.</h1>
-    </div>
+    <>
+      <Editor />
+    </>
   );
 }
