@@ -5,6 +5,9 @@ import Attribute from "./components/attribute";
 
 import "./index.scss";
 
+import styles from "./index.module.scss";
+console.log(styles);
+
 export default function () {
   return (
     <article className="vc-layout">
