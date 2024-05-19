@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -25,16 +27,23 @@ module.exports = {
         use: ["babel-loader", "ts-loader"],
       },
       {
-        test: /(\.module)?.(sass|scss)$/,
+        // CSS 解析
+        test: /\.(sass|scss)$/,
+        // 去除 CSS Module 解析
+        exclude: /\.module\.(css|scss)/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        // CSS Module 解析
+        test: /\.module\.(css|scss)$/,
         use: [
           "style-loader",
           {
             loader: "css-loader",
             options: {
               modules: {
-                localIdentName: "[path][name]__[local]--[hash:base64:5]",
+                localIdentName: "[local]___[hash:base64:5]", // 自定义的类名格式
               },
-              sourceMap: true,
             },
           },
           "sass-loader",
@@ -43,15 +52,9 @@ module.exports = {
     ],
   },
   plugins: [
-    // new ModuleFederationPlugin({
-    //     name: 'mainApp',
-    //     remotes: {
-    //         microApp1: 'microApp1@http://localhost:3002/remoteEntry.js',
-    //         // microApp2: 'microApp2@http://localhost:3003/remoteEntry.js',
-    //     },
-    // }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
+    // new BundleAnalyzerPlugin(),
   ],
 };
