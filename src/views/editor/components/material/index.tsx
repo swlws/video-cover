@@ -1,3 +1,3 @@
 export default function () {
-  return <>物料</>;
+  return <>left</>;
 }

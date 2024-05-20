@@ -1,7 +1,7 @@
+const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+
+console.log(path.resolve(__dirname, 'src'))
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -17,6 +17,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    alias: {
+      "@": path.resolve(__dirname, 'src')
+    }
   },
   module: {
     rules: [
@@ -48,6 +51,15 @@ module.exports = {
           },
           "sass-loader",
         ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|webp|svg)$/i,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024 // 小于10kb的图片会被 base64 处理
+          }
+        }
       },
     ],
   },

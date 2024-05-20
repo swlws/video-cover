@@ -1,3 +1,3 @@
 export default function () {
-  return <>画板</>;
+  return <>middle</>;
 }

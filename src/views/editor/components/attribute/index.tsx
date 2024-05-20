@@ -1,3 +1,3 @@
 export default function () {
-  return <>属性</>;
+  return <>right</>;
 }

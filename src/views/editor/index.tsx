@@ -3,21 +3,39 @@ import Material from "./components/material";
 import DrawBoard from "./components/draw-board";
 import Attribute from "./components/attribute";
 
+// 样式
 import styles from "./index.module.scss";
 
+// 图片
+import StarSvg from '@/assets/star-fill.svg'
+
 export default function () {
-  console.log(styles);
   return (
     <article className={styles["vc-layout"]}>
-      <header className={styles["vc-layout--left"]}>
-        <Material />
+      {/* 头部 */}
+      <header className={styles["vc-layout--header"]}>
+
       </header>
+
+      {/* 中部左侧 */}
+      <main className={styles["vc-layout--left"]}>
+        <Material />
+      </main>
+
+      {/* 中部 */}
       <main className={styles["vc-layout--middle"]}>
         <DrawBoard />
+
+        <img alt="star" src={StarSvg}/>
       </main>
-      <footer className={styles["vc-layout--right"]}>
+
+      {/* 中部右侧  */}
+      <main className={styles["vc-layout--right"]}>
         <Attribute />
-      </footer>
+      </main>
+
+      {/* 底部 */}
+      <footer className={styles["vc-layout--footer"]}></footer>
     </article>
   );
 }
