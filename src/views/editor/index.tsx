@@ -9,12 +9,19 @@ import styles from "./index.module.scss";
 // 图片
 import StarSvg from '@/assets/star-fill.svg'
 
+function Title(){
+  return <div className="vc-header-title">
+    <img width={20} height={20} alt="star" src={StarSvg}/>
+    <span>Title</span>
+  </div>
+}
+
 export default function () {
   return (
     <article className={styles["vc-layout"]}>
       {/* 头部 */}
       <header className={styles["vc-layout--header"]}>
-
+        <Title />
       </header>
 
       {/* 中部左侧 */}
@@ -25,8 +32,6 @@ export default function () {
       {/* 中部 */}
       <main className={styles["vc-layout--middle"]}>
         <DrawBoard />
-
-        <img alt="star" src={StarSvg}/>
       </main>
 
       {/* 中部右侧  */}

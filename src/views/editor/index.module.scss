@@ -17,6 +17,11 @@
   &--header {
     border-bottom: var(--vc-border);
     background-color: #fff;
+
+    :global(.vc-header-title) {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &--left {
