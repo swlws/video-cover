@@ -1,5 +1,7 @@
 const path = require("path")
+const webpack = require("webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 console.log(path.resolve(__dirname, 'src'))
 
@@ -34,13 +36,21 @@ module.exports = {
         test: /\.(sass|scss)$/,
         // 去除 CSS Module 解析
         exclude: /\.module\.(css|scss)/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          // 将 css 写在 js 文件中
+          // "style-loader",
+          // 将 css 抽离为单独的文件，以 link 的方式引入
+          MiniCssExtractPlugin.loader,
+          "css-loader", "sass-loader"],
       },
       {
         // CSS Module 解析
         test: /\.module\.(css|scss)$/,
         use: [
-          "style-loader",
+          // 将 css 写在 js 文件中
+          // "style-loader",
+          // 将 css 抽离为单独的文件，以 link 的方式引入
+          MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {
@@ -67,6 +77,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    // new BundleAnalyzerPlugin(),
+    // 提取css成单独文件
+    new MiniCssExtractPlugin({
+      // 定义输出文件名和目录
+      filename: "static/css/main.css",
+    }),
+    // chunk 的大小保持在 10000 个字符
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 10000, // Minimum number of characters
+    }),
   ],
 };
