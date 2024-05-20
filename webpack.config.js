@@ -1,11 +1,16 @@
 const path = require("path")
 const webpack = require("webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// CSS 分离为单独的文件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+// CSS 压缩
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 console.log(path.resolve(__dirname, 'src'))
 
 module.exports = {
+  // 模式
+  mode: 'production',
   entry: "./src/index.tsx",
   output: {
     path: __dirname + "/dist",
@@ -102,5 +107,13 @@ module.exports = {
     new webpack.optimize.MinChunkSizePlugin({
       minChunkSize: 10000, // Minimum number of characters
     }),
+    // CSS 压缩，放在 plugins 中或者 optimization.minimizer 中都可以
+    // new CssMinimizerPlugin()
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMinimizerPlugin()
+    ]
+  }
 };
