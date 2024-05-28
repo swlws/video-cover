@@ -46,7 +46,16 @@ module.exports = {
           // "style-loader",
           // 将 css 抽离为单独的文件，以 link 的方式引入
           MiniCssExtractPlugin.loader,
-          "css-loader", "sass-loader"],
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer"],
+              },
+            },
+          },
+          "sass-loader"],
       },
       {
         // CSS Module 解析
@@ -61,6 +70,14 @@ module.exports = {
             options: {
               modules: {
                 localIdentName: "[local]___[hash:base64:5]", // 自定义的类名格式
+              },
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer"],
               },
             },
           },
