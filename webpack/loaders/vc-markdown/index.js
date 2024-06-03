@@ -14,7 +14,7 @@ const schema = {
     },
 };
 
-const LOADER_NAME = 'mardkwon'
+const LOADER_NAME = 'VcMardkwon'
 
 module.exports = function (source) {
     console.log(`\n\n call loader ${LOADER_NAME} \n\n`)
