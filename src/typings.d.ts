@@ -22,3 +22,5 @@ declare module "*.jpg";
 declare module "*.gif";
 declare module "*.webp";
 declare module "*.svg";
+
+declare module "*.md";

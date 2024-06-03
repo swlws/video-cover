@@ -28,6 +28,9 @@ module.exports = {
       "@": path.resolve(__dirname, 'src')
     }
   },
+  resolveLoader: {
+    modules: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, 'webpack', 'loaders')]
+  },
   module: {
     rules: [
       {
@@ -109,6 +112,15 @@ module.exports = {
           filename: "static/media/[hash:8][ext][query]",
         },
       },
+      {
+        test: /\.md$/i,
+        use: [{
+          loader: 'vc-markdown',
+          options: {
+            theme: 'block'
+          }
+        }]
+      }
     ],
   },
   plugins: [
