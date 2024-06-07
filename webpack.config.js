@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 // CSS 压缩
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
-console.log(path.resolve(__dirname, 'src'))
+const VcSign = require("./webpack/plugins/vc-sign/index")
 
 module.exports = {
   // 模式
@@ -142,7 +142,8 @@ module.exports = {
   optimization: {
     minimize: true,
     minimizer: [
-      new CssMinimizerPlugin()
+      new CssMinimizerPlugin(),
+      new VcSign()
     ]
   }
 };
