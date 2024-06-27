@@ -138,6 +138,12 @@ module.exports = {
     }),
     // CSS 压缩，放在 plugins 中或者 optimization.minimizer 中都可以
     // new CssMinimizerPlugin()
+    new webpack.BannerPlugin({
+      banner: 'created by swlws!!!'
+    }),
+    new webpack.ProgressPlugin((percentage, message) => {
+      console.log(percentage, message)
+    })
   ],
   optimization: {
     minimize: true,
